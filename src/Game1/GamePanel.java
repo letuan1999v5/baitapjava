@@ -1,33 +1,35 @@
 package Game1;
 
+import game.Enemy;
 import tklibs.SpriteUtils;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
+import java.util.ArrayList;
 
 public class GamePanel extends JPanel {
-    BufferedImage backgroundImage;
-    BufferedImage playerImage;
-    int backgroundX;
-    int backgroundY;
-    int playerX;
-    int playerY;
+    Background background;
+    Player player;
+    game.Enemy enemy;
 
     public GamePanel() {
-        backgroundImage = SpriteUtils.loadImage("assets/images/background/0.png");
-        playerImage = SpriteUtils.loadImage("assets/images/players/straight/2.png");
-        backgroundX = 0;
-        backgroundY = 600 - 3109;
-        playerX = 200;
-        playerY = 500;
+        background = new Background();
+        player = new Player();
+        enemy = new Enemy();
     }
 
     @Override
     public void paint(Graphics g) {
-        g.drawImage(backgroundImage, backgroundX, backgroundY, null);
-        g.drawImage(playerImage, playerX, playerY, null);
+        //ve anh
+        for (int i = 0; i < GameObject.objects.size(); i++) {
+            GameObject object = GameObject.objects.get(i);
+            if (object.active) {
+                object.render(g);
+            }
+        }
     }
+
 
     public void gameLoop() {
         long lastTime = 0;
@@ -40,6 +42,7 @@ public class GamePanel extends JPanel {
                 runAll();
                 renderAll();
                 lastTime = currentTime;
+
             }
         }
     }
@@ -49,32 +52,11 @@ public class GamePanel extends JPanel {
     }
 
     private void runAll() {
-        if (backgroundY <= 0) {
-            backgroundY += 2;
-        }
-        if (playerX==31) {
-            playerX+=1  ;
-        }
-        if (playerX==400-31){
-            playerX-=1;
-        }
-        if (playerY==47){
-            playerY+=1;
-        }
-        if (playerY==600-47) {
-            playerY -= 1;
-        }
-        if (GameWindow.isUpPress) {
-            playerY -= 2;
-        }
-        if (GameWindow.isDownPress) {
-            playerY += 2;
-        }
-        if (GameWindow.isLeftPress) {
-            playerX -= 2;
-        }
-        if (GameWindow.isRightPress) {
-            playerX += 2;
+        for (int i = 0; i < GameObject.objects.size(); i++) {
+            GameObject object = GameObject.objects.get(i);
+            if (object.active) {
+                object.run();
+            }
         }
     }
 }
