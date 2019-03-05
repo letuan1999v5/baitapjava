@@ -5,6 +5,7 @@ import java.sql.SQLOutput;
 public class Vector2D {
     public double x;
     public double y;
+
     //ham tao rong
     public Vector2D(){
         this.x=0;

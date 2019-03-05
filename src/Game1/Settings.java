@@ -13,4 +13,5 @@ public class Settings {
     public static int ENEMY_SPEED = 3;
     public static int ENEMY_BULLET_SPEED = 2;
     public static int PLAYER_BULLET_SPEED = 4;
+    public static int PLAYER_SPEED = 3;
 }

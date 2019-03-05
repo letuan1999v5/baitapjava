@@ -5,9 +5,9 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 
 public class Rocket {
+    public Vector2D position;
+    public Vector2D velocity;
     BufferedImage image;
-    Vector2D position;
-    Vector2D velocity;
 
     public Rocket() {
         image = SpriteUtils.loadImage("assets/images/player-bullets/rocket4.png");

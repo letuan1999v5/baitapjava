@@ -1,17 +1,15 @@
 package Game1;
 
-import game.Enemy;
-import tklibs.SpriteUtils;
+import Game1.enemy.Enemy;
+import Game1.player.Player;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.image.BufferedImage;
-import java.util.ArrayList;
 
 public class GamePanel extends JPanel {
     Background background;
     Player player;
-    game.Enemy enemy;
+    Enemy enemy;
 
     public GamePanel() {
         background = new Background();
