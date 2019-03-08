@@ -1,6 +1,6 @@
-import Game1.GamePanel;
-import Game1.GameWindow;
-import Game1.Settings;
+import game.GamePanel;
+import game.GameWindow;
+import game.Settings;
 
 import javax.swing.*;
 import java.awt.*;
